@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 import torch
 from torch.nn import functional as F
 from torch.optim import Adam
+from wurlitzer import pipes
 
 from .arch import get_arch
 from .dataset import each_batch, get_dataset
@@ -27,8 +28,9 @@ def parse_args():
 def main(args):
     device = torch.device(args.device)
 
-    loaders, in_channels, out_classes = get_dataset(
-        args.dataset, args.data_root, args.batch_size)
+    with pipes():
+        loaders, in_channels, out_classes = get_dataset(
+            args.dataset, args.data_root, args.batch_size)
 
     model_class = get_arch(args.arch)
     warp_class = get_warp(args.warp)
