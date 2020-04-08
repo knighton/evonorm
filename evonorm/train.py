@@ -12,14 +12,14 @@ from .warp import get_warp
 def parse_args():
     x = ArgumentParser()
 
-    x.add_argument('--arch', type=str, default='fast')
+    x.add_argument('--arch', type=str, default='resnet18')
     x.add_argument('--dataset', type=str, default='cifar10')
     x.add_argument('--warp', type=str, default='bn_relu')
 
     x.add_argument('--data_root', type=str, default='data/')
     x.add_argument('--device', type=str, default='cuda:0')
     x.add_argument('--num_epochs', type=int, default=100)
-    x.add_argument('--batch_size', type=int, default=512)
+    x.add_argument('--batch_size', type=int, default=64)
     x.add_argument('--tqdm', type=int, default=1)
 
     return x.parse_args()
