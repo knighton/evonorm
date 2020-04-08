@@ -50,12 +50,3 @@ class Fast(nn.Sequential):
     def __init__(self, in_channels, out_dim, get_warp, mid_channels=64):
         each = each_fast_block(in_channels, out_dim, get_warp, mid_channels)
         super().__init__(*each)
-
-
-archs = {
-    'fast': Fast,
-}
-
-
-def get_arch(name):
-    return archs[name]
